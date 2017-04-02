@@ -11,6 +11,6 @@ class ItemPart extends Model
 
     public function chances()
     {
-        return $this->hasMany('App\Models\RelicReward');
+        return $this->hasMany('App\Models\RelicReward', 'item_part_id', 'id');
     }
 }

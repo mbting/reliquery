@@ -11,6 +11,6 @@ class Item extends Model
 
     public function parts()
     {
-        return $this->hasMany('App\Models\ItemPart');
+        return $this->hasMany('App\Models\ItemPart', 'item_id', 'id');
     }
 }
