@@ -55,7 +55,8 @@ class ApiController extends Controller
         foreach ($i->parts as $p) {
             $part = [];
             $part['id'] = $p->id;
-            $part['name'] = $p->name;
+            $part['name'] = trim(str_replace($i->name, '', $p->name));
+            $part['name'] = trim(str_replace(' Blueprint', '', $part['name']));
             $part['relics'] = [];
             foreach ($p->chances as $c) {
                 $relic = [];
