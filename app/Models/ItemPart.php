@@ -8,4 +8,9 @@ class ItemPart extends Model
 {
     protected $table = 'item_parts';
     public $timestamps = true;
+
+    public function chances()
+    {
+        return $this->hasMany('App\Models\RelicReward');
+    }
 }

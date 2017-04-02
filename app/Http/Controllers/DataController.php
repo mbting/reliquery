@@ -83,11 +83,11 @@ class DataController extends Controller
             $r->save();
             foreach ($relic->rewards as $reward) {
                 $p = ItemPart::where('name', $reward->name)->first();
-                $rr = RelicReward::where('relics_id', $r->id)
-                                 ->where('item_parts_id',$p->id)->first();
+                $rr = RelicReward::where('relic_id', $r->id)
+                                 ->where('item_part_id',$p->id)->first();
                 $rr = ($rr === null) ? new RelicReward() : $rr;
-                $rr->relics_id = $r->id;
-                $rr->item_parts_id = $p->id;
+                $rr->relic_id = $r->id;
+                $rr->item_part_id = $p->id;
                 $rr->exceptional = $reward->chance->exceptional;
                 $rr->flawless = $reward->chance->flawless;
                 $rr->intact = $reward->chance->intact;
@@ -96,10 +96,10 @@ class DataController extends Controller
             }
             foreach ($relic->sources as $mission => $source) {
                 $s = Source::where('name', $mission)->first();
-                $rs = RelicSource::where('relics_id', $r->id)->where('sources_id', $s->id)->first();
+                $rs = RelicSource::where('relic_id', $r->id)->where('source_id', $s->id)->first();
                 $rs = ($rs === null) ? new RelicSource() : $rs;
-                $rs->relics_id = $r->id;
-                $rs->sources_id = $s->id;
+                $rs->relic_id = $r->id;
+                $rs->source_id = $s->id;
                 $rs->save();
                 foreach ($source->rotations as $name => $chance) {
                     $ro = Rotation::where('relic_source_id', $rs->id)->where('name', $name)->first();

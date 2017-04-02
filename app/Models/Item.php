@@ -8,4 +8,9 @@ class Item extends Model
 {
     protected $table = 'items';
     public $timestamps = true;
+
+    public function parts()
+    {
+        return $this->hasMany('App\Models\ItemPart');
+    }
 }
