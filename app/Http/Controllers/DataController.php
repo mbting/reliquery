@@ -106,6 +106,7 @@ class DataController extends Controller
                     $ro = ($ro === null) ? new Rotation() : $ro;
                     $ro->name = $name;
                     $ro->chance = $chance;
+                    $ro->relic_source_id = $rs->id;
                     $ro->save();
                 }
             }
